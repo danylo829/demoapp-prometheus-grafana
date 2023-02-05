@@ -1,0 +1,3 @@
+---
+# defaults file for configure_demoapp_instance
+  project_folder: "/usr/demoapp"

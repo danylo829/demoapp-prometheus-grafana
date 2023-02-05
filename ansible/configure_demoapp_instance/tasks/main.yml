@@ -1,0 +1,17 @@
+---
+# tasks file for configure_demoapp_instance
+  - name: Create project folder
+    file:
+      path: "{{ project_folder }}"
+      state: directory
+
+  - name: Copy docker compose file
+    copy:
+      src: docker-compose.yml
+      dest: "{{ project_folder }}/docker-compose.yml"
+
+  - name: Deploy Docker Compose stack
+    community.docker.docker_compose:
+      project_src: "{{ project_folder }}"
+      files:
+      - docker-compose.yml

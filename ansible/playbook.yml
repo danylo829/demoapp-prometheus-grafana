@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - secrets.yml
+  roles:
+    - install_docker
+    - {role: configure_demoapp_instance, when: ansible_hostname == "demoapp"}
+    - {role: install_moni,               when: ansible_hostname == "moni"}
+    #TODO tags
